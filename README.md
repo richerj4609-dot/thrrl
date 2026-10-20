@@ -10,7 +10,7 @@ work3/
 ├─ kakao.html              카카오톡 1:1 오픈채팅 페이지
 ├─ css/style.css           디자인 / 반응형
 ├─ js/script.js            메뉴 · FAQ · 카카오톡 링크
-├─ images/hero-council.png 히어로 우측 사진 (의회 본회의장)
+├─ images/hero-track.png   히어로 우측 사진 (러닝 트랙 · 레이싱화 끈)
 └─ README.md
 ```
 
