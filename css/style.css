@@ -120,11 +120,7 @@ ul,ol{list-style:none}
   margin:24px 0 20px;font-size:clamp(38px,6.4vw,68px);
   font-weight:900;line-height:1.16;letter-spacing:-2.4px;color:#fff;
 }
-.hero__title em{font-style:normal;color:var(--green-xlt);position:relative;white-space:nowrap}
-.hero__title em::after{
-  content:"";position:absolute;left:0;right:0;bottom:6px;height:14px;
-  background:var(--kakao);z-index:-1;border-radius:3px;
-}
+.hero__title em{font-style:normal;color:var(--green-xlt);white-space:nowrap}
 .hero__desc{font-size:clamp(16px,2vw,19px);color:rgba(255,255,255,.82);max-width:520px;font-weight:300}
 .hero__btns{display:flex;flex-wrap:wrap;gap:13px;margin-top:36px}
 .hero__btns .btn--line{color:#fff;border-color:rgba(255,255,255,.55)}
