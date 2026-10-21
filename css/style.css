@@ -86,13 +86,13 @@ ul,ol{list-style:none}
 .burger{display:none;flex-direction:column;gap:5px;background:none;border:0;cursor:pointer;padding:6px}
 .burger span{width:24px;height:2.5px;background:var(--green);border-radius:2px;transition:.25s}
 
-/* ── 히어로 : 짙은 청록 그러데이션 ── */
+/* ── 히어로 : 짙은 남색 그러데이션 ── */
 .hero{
   position:relative;overflow:hidden;
   padding:160px 0 100px;
   background:
-    radial-gradient(760px 520px at 86% 26%, rgba(140,240,232,.22), transparent 62%),
-    linear-gradient(150deg,#02302E 0%,#04594F 52%,#02877C 100%);
+    radial-gradient(760px 520px at 86% 26%, rgba(140,200,255,.22), transparent 62%),
+    linear-gradient(150deg,#071B34 0%,#0E3C66 52%,#175A94 100%);
 }
 .hero__inner{position:relative;z-index:2}
 
@@ -107,8 +107,8 @@ ul,ol{list-style:none}
 .hero__photo-grad{
   position:absolute;inset:0;
   background:
-    linear-gradient(180deg,rgba(2,48,46,.32) 0%,rgba(2,48,46,0) 26%,rgba(2,48,46,0) 74%,rgba(2,48,46,.38) 100%),
-    linear-gradient(90deg,rgba(4,89,84,.28) 0%,rgba(4,89,84,.10) 55%,rgba(4,89,84,0) 100%);
+    linear-gradient(180deg,rgba(7,27,52,.32) 0%,rgba(7,27,52,0) 26%,rgba(7,27,52,0) 74%,rgba(7,27,52,.38) 100%),
+    linear-gradient(90deg,rgba(14,60,102,.28) 0%,rgba(14,60,102,.10) 55%,rgba(14,60,102,0) 100%);
 }
 
 .hero__eyebrow{
@@ -376,7 +376,7 @@ ul,ol{list-style:none}
 
   .hero{padding:120px 0 70px}
   .hero__photo{width:100%;-webkit-mask-image:none;mask-image:none}
-  .hero__photo-grad{background:linear-gradient(180deg,rgba(2,48,46,.9),rgba(2,48,46,.94))}
+  .hero__photo-grad{background:linear-gradient(180deg,rgba(7,27,52,.9),rgba(7,27,52,.94))}
   .section{padding:66px 0}
   .people{grid-template-columns:1fr}
   .will__cta{flex-direction:column;text-align:center;align-items:stretch}
