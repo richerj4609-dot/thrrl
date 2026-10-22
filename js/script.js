@@ -64,8 +64,12 @@ function initTopOnOpen() {
   if (location.hash && location.hash !== '#') return;
   const html = document.documentElement;
   const prev = html.style.scrollBehavior;
-  html.style.scrollBehavior = 'auto';   // 애니메이션 없이 바로 이동
-  window.scrollTo(0, 0);
+  html.style.scrollBehavior = 'auto';   // CSS smooth 무력화
+  try {
+    window.scrollTo({ top: 0, left: 0, behavior: 'instant' });  // 애니메이션 없이 즉시 상단
+  } catch (e) {
+    window.scrollTo(0, 0);
+  }
   html.style.scrollBehavior = prev;
 }
 window.addEventListener('load', initTopOnOpen);
