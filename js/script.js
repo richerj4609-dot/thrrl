@@ -57,7 +57,21 @@ function initFaq() {
   });
 }
 
-/* 5) 본문 실행 */
+/* 5) 홈 진입 시 항상 첫 화면(상단)부터 보이도록
+      - 세션 복원·이전 방문으로 화면이 맨 아래에서 열리는 문제 방지
+      - 특정 섹션(#faq 등) 링크로 열었을 때는 위치 유지 */
+function initTopOnOpen() {
+  if (location.hash && location.hash !== '#') return;
+  const html = document.documentElement;
+  const prev = html.style.scrollBehavior;
+  html.style.scrollBehavior = 'auto';   // 애니메이션 없이 바로 이동
+  window.scrollTo(0, 0);
+  html.style.scrollBehavior = prev;
+}
+window.addEventListener('load', initTopOnOpen);
+if (document.readyState === 'complete') initTopOnOpen();
+
+/* 6) 본문 실행 */
 document.addEventListener('DOMContentLoaded', () => {
   applyKakaoUrl();
   initHeader();
