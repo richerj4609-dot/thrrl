@@ -284,6 +284,23 @@ ul,ol{list-style:none}
 .footer__bottom{border-top:1px solid rgba(255,255,255,.1);padding:20px 0}
 .footer__bottom p{font-size:13.5px;color:rgba(255,255,255,.45)}
 
+/* ── 푸터 QR 코드 ── */
+.footer__qr{
+  display:flex;align-items:center;gap:24px;
+  padding:26px 0;border-top:1px solid rgba(255,255,255,.1);
+}
+.qr-box{
+  background:#fff;padding:10px;border-radius:12px;line-height:0;flex-shrink:0;
+  box-shadow:0 4px 16px rgba(0,0,0,.18);
+}
+.qr-box img{display:block;width:130px;height:130px}
+.qr-text strong{display:block;font-size:17px;color:#fff;margin-bottom:7px}
+.qr-text p{font-size:14.5px;color:rgba(255,255,255,.68);line-height:1.65}
+.qr-text p b{color:#fff;font-weight:700}
+@media (max-width:520px){
+  .footer__qr{flex-direction:column;text-align:center;gap:16px}
+}
+
 /* ── 플로팅 버튼 ─────────────────── */
 .float{position:fixed;right:22px;bottom:26px;z-index:90;display:flex;flex-direction:column;gap:11px}
 .float__btn{
