@@ -75,10 +75,25 @@ function initTopOnOpen() {
 window.addEventListener('load', initTopOnOpen);
 if (document.readyState === 'complete') initTopOnOpen();
 
-/* 6) 본문 실행 */
+/* 6) 우측 하단 '맨 위로' 버튼 */
+function initTopBtn() {
+  const btn = document.querySelector('.float__btn--top');
+  if (!btn) return;
+  btn.addEventListener('click', e => {
+    e.preventDefault();   // 주소에 #top 붙는 것 방지
+    try {
+      window.scrollTo({ top: 0, left: 0, behavior: 'smooth' });
+    } catch (err) {
+      window.scrollTo(0, 0);
+    }
+  });
+}
+
+/* 7) 본문 실행 */
 document.addEventListener('DOMContentLoaded', () => {
   applyKakaoUrl();
   initHeader();
   initMobileNav();
   initFaq();
+  initTopBtn();
 });
