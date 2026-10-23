@@ -410,3 +410,10 @@ ul,ol{list-style:none}
   .float__btn{width:50px;height:50px}
   .footer__inner{flex-direction:column;gap:26px}
 }
+
+/* 아주 좁은 화면에서 로고명(유언.녹취 합동속기사무소)과 햄버거 메뉴가
+   한 줄에 들어오도록 여백·글자를 약간 줄인다. 360px 이상은 영향 없음. */
+@media (max-width:360px){
+  .header__inner{gap:16px}
+  .logo__text strong{font-size:16px}
+}
