@@ -18,11 +18,21 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700;900&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/style.css?v=20261023">
 
 <!-- 사이트를 열면 항상 첫 화면(상단)부터 보이도록
-     브라우저의 '이전 스크롤 위치 복원' 기능을 끕니다. -->
-<script>if('scrollRestoration' in history){history.scrollRestoration='manual';}</script>
+     1) 브라우저의 '이전 스크롤 위치 복원' 기능을 끈다.
+     2) 외부 스크립트 캐시와 무관하게 이 문서 안에서 바로 상단으로 이동한다. -->
+<script>
+  if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
+  function __goTopNow() {
+    if (location.hash && location.hash !== '#') return;
+    try { window.scrollTo({ top: 0, left: 0, behavior: 'instant' }); }
+    catch (e) { window.scrollTo(0, 0); }
+  }
+  window.addEventListener('load', __goTopNow);
+  if (document.readyState === 'complete') __goTopNow();
+</script>
 </head>
 <body id="top">
 
@@ -412,6 +422,6 @@
   </a>
 </div>
 
-<script src="js/script.js"></script>
+<script src="js/script.js?v=20261023"></script>
 </body>
 </html>
