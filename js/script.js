@@ -7,7 +7,7 @@
    주소를 바꿀 때는 아래 한 줄만 수정하면
    페이지 전체 카카오톡 버튼에 자동 반영됩니다.
    ──────────────────────────────────────── */
-const KAKAO_CHAT_URL = "https://open.kakao.com/o/sVRLulTi";
+const KAKAO_CHAT_URL = "https://open.kakao.com/o/syStDWTi";
 
 
 /* 1) 모든 카카오톡 링크에 URL 적용 */
