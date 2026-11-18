@@ -145,8 +145,8 @@ ul,ol{list-style:none}
 #about{
   position:relative;
   background:
-    radial-gradient(720px 500px at 16% 14%, rgba(143,240,196,.15), transparent 62%),
-    linear-gradient(160deg, rgba(7,45,33,.9) 0%, rgba(16,92,70,.56) 46%, rgba(6,40,30,.93) 100%),
+    radial-gradient(720px 500px at 16% 14%, rgba(143,240,196,.08), transparent 62%),
+    linear-gradient(160deg, rgba(6,38,28,.96) 0%, rgba(10,64,48,.87) 46%, rgba(4,30,23,.98) 100%),
     url(../images/book-bg.jpg) center center / cover no-repeat;
   background-color:#0A3D2C;
 }
