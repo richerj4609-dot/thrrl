@@ -314,12 +314,17 @@ ul,ol{list-style:none}
 /* ══════════════════════════════════
    카카오톡 오픈채팅 페이지
    ══════════════════════════════════ */
+/* 두 번째 페이지 배경 : 고서체 한글 책 펼침면 + 녹색 그라데이션 오버레이 */
 .kakao-page{
   background:
-    radial-gradient(600px 400px at 80% 0%, rgba(143,240,196,.2), transparent 60%),
-    linear-gradient(160deg,#0A3D2C 0%,#12604A 100%);
+    radial-gradient(600px 400px at 80% 0%, rgba(143,240,196,.16), transparent 60%),
+    linear-gradient(160deg, rgba(7,45,33,.82) 0%, rgba(16,92,70,.52) 48%, rgba(6,40,30,.9) 100%),
+    url(../images/book-bg.jpg) center center / cover no-repeat;
+  background-color:#0A3D2C;
   min-height:100vh;
 }
+/* 카카오톡 페이지 푸터만 배경을 비워 책 이미지가 페이지 전체에 이어지도록 */
+.kakao-page .footer{background:transparent}
 .kakao-main{padding:132px 0 80px}
 
 .chat-card{
