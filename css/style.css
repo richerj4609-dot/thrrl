@@ -168,6 +168,15 @@ ul,ol{list-style:none}
 }
 .hero-form__submit:hover{transform:translateY(-2px);box-shadow:0 10px 24px rgba(254,229,0,.35)}
 .hero-form__submit:active{transform:translateY(0)}
+.hero-form__submit:disabled{opacity:.65;cursor:default;transform:none;box-shadow:none}
+/* 전송 결과 안내 (비어 있을 땐 숨겨서 세로 크기 유지) */
+.hero-form__msg{
+  flex:1 1 100%;margin:2px 0 0;
+  font-size:13.5px;font-weight:700;letter-spacing:-.3px;color:#fff;
+}
+.hero-form__msg:empty{display:none}
+.hero-form__msg.is-ok{color:#7CF0BE}
+.hero-form__msg.is-err{color:#FFC9C9}
 @media (max-width:560px){
   .hero-form{padding:12px 14px;gap:10px 14px}
   .hero-form__field{flex:1 1 100%}

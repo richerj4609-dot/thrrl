@@ -18,7 +18,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700;900&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="css/style.css?v=11">
+<link rel="stylesheet" href="css/style.css?v=12">
 
 <!-- 사이트를 열면 항상 첫 화면(상단)부터 보이도록
      1) 브라우저의 '이전 스크롤 위치 복원' 기능을 끈다.
@@ -91,17 +91,18 @@
     <form class="hero-form" id="consultForm" novalidate>
       <div class="hero-form__field">
         <label class="sr-only" for="cfName">성명</label>
-        <input type="text" id="cfName" placeholder="성명" autocomplete="name">
+        <input type="text" id="cfName" name="성명" placeholder="성명" autocomplete="name">
       </div>
       <div class="hero-form__field">
         <label class="sr-only" for="cfTel">연락처</label>
-        <input type="tel" id="cfTel" placeholder="연락처" autocomplete="tel">
+        <input type="tel" id="cfTel" name="연락처" placeholder="연락처" autocomplete="tel">
       </div>
       <label class="hero-form__agree" for="cfAgree">
-        <input type="checkbox" id="cfAgree">
+        <input type="checkbox" id="cfAgree" name="개인정보수집동의" value="동의">
         <span>개인정보 수집에 동의합니다.</span>
       </label>
       <button type="submit" class="hero-form__submit">상담신청</button>
+      <p class="hero-form__msg" id="consultMsg" role="status" aria-live="polite"></p>
     </form>
   </div>
 </section>
@@ -438,6 +439,6 @@
   </a>
 </div>
 
-<script src="js/script.js?v=20261120b"></script>
+<script src="js/script.js?v=20261120c"></script>
 </body>
 </html>

@@ -94,33 +94,62 @@ function initTopBtn() {
       받는 주소를 바꿀 때는 MAIL_TO 한 줄만 수정하면 됩니다. */
 const MAIL_TO = "1004m@hanmail.net";
 
-/* 상담 신청 메일 주소 만들기 : 성명·연락처를 제목/본문에 담아 발송 */
-function buildConsultMail(name, tel) {
-  const subject = `[상담신청] ${name} / ${tel}`;
-  const body =
-    `합동속기사무소 상담 신청\n\n` +
-    `성명 : ${name}\n` +
-    `연락처 : ${tel}\n` +
-    `개인정보 수집 동의 : 동의\n`;
-  return `mailto:${MAIL_TO}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-}
+/* 7) 히어로 상담 입력창 → 백그라운드 메일 전송 (FormSubmit)
+      새 창·메일 프로그램 없이 화면에서 바로 접수 완료됩니다.
+      받는 주소를 바꿀 때는 MAIL_TO 한 줄만 수정하면 됩니다.
+      ※ FormSubmit 최초 1회 'Activate Form' 확인 메일만 누르면 활성화됩니다. */
+const CONSULT_ENDPOINT = `https://formsubmit.co/ajax/${MAIL_TO}`;
 
 function initConsultForm() {
   const form = document.getElementById('consultForm');
   if (!form) return;
 
-  form.addEventListener('submit', e => {
+  const msg = document.getElementById('consultMsg');
+  const btn = form.querySelector('.hero-form__submit');
+  const showMsg = (text, cls) => {
+    if (!msg) return;
+    msg.textContent = text;
+    msg.className = 'hero-form__msg' + (cls ? ' ' + cls : '');
+  };
+
+  form.addEventListener('submit', async e => {
     e.preventDefault();
 
     const name  = document.getElementById('cfName').value.trim();
     const tel   = document.getElementById('cfTel').value.trim();
     const agree = document.getElementById('cfAgree').checked;
 
-    if (!name)  { alert('성명을 입력해 주세요.');  document.getElementById('cfName').focus();  return; }
-    if (!tel)   { alert('연락처를 입력해 주세요.'); document.getElementById('cfTel').focus();   return; }
-    if (!agree) { alert('개인정보 수집에 동의해 주세요.'); document.getElementById('cfAgree').focus(); return; }
+    if (!name)  { showMsg('성명을 입력해 주세요.', 'is-err');      document.getElementById('cfName').focus();  return; }
+    if (!tel)   { showMsg('연락처를 입력해 주세요.', 'is-err');     document.getElementById('cfTel').focus();   return; }
+    if (!agree) { showMsg('개인정보 수집에 동의해 주세요.', 'is-err'); document.getElementById('cfAgree').focus(); return; }
 
-    window.location.href = buildConsultMail(name, tel);
+    const label = btn.textContent;
+    btn.disabled = true;
+    btn.textContent = '전송 중…';
+
+    try {
+      const res = await fetch(CONSULT_ENDPOINT, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+        body: JSON.stringify({
+          _subject: `[상담신청] ${name} / ${tel}`,
+          _captcha: 'false',
+          '성명': name,
+          '연락처': tel,
+          '개인정보수집동의': '동의'
+        })
+      });
+      const data = await res.json().catch(() => ({}));
+      if (!res.ok || String(data.success) !== 'true') throw new Error(data.message || 'send failed');
+
+      showMsg('상담 신청이 접수되었습니다. 확인 후 빠르게 연락드리겠습니다.', 'is-ok');
+      form.reset();
+    } catch (err) {
+      showMsg('전송에 실패했습니다. 잠시 후 다시 시도해 주세요.', 'is-err');
+    } finally {
+      btn.disabled = false;
+      btn.textContent = label;
+    }
   });
 }
 
