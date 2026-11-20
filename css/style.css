@@ -136,7 +136,7 @@ ul,ol{list-style:none}
 .hero-form-wrap{position:relative;z-index:3}
 .hero-form{
   display:flex;flex-wrap:wrap;align-items:center;gap:10px 22px;
-  margin:0 auto;max-width:660px;
+  margin:64px auto 0;max-width:660px;
   padding:12px 18px;border-radius:14px;
   background:rgba(4,17,35,.55);
   border:1px solid rgba(255,255,255,.22);
@@ -469,8 +469,8 @@ ul,ol{list-style:none}
   .hero{padding:120px 0 70px}
   .hero__photo{width:100%;-webkit-mask-image:none;mask-image:none}
   .hero__photo-grad{background:linear-gradient(180deg,rgba(7,27,52,.9),rgba(7,27,52,.94))}
-  /* 좁은 화면 : 가운데 정렬 유지 */
-  .hero-form{margin:30px auto 0}
+  /* 좁은 화면 : 가운데 정렬 유지 + 아래로 내림 */
+  .hero-form{margin:52px auto 0}
   .section{padding:66px 0}
   .people{grid-template-columns:1fr}
   .will__cta{flex-direction:column;text-align:center;align-items:stretch}
