@@ -86,30 +86,17 @@ ul,ol{list-style:none}
 .burger{display:none;flex-direction:column;gap:5px;background:none;border:0;cursor:pointer;padding:6px}
 .burger span{width:24px;height:2.5px;background:var(--green);border-radius:2px;transition:.25s}
 
-/* ── 히어로 : 짙은 남색 그러데이션 ── */
+/* ── 히어로 : 고서체 유언 문서 사진 + 남색 그러데이션 오버레이 ── */
 .hero{
   position:relative;overflow:hidden;
   padding:160px 0 84px;
   background:
-    radial-gradient(760px 520px at 86% 26%, rgba(140,200,255,.22), transparent 62%),
-    linear-gradient(150deg,#071B34 0%,#0E3C66 52%,#175A94 100%);
+    radial-gradient(760px 520px at 86% 26%, rgba(140,200,255,.18), transparent 62%),
+    linear-gradient(150deg, rgba(7,27,52,.93) 0%, rgba(14,60,102,.84) 52%, rgba(23,90,148,.76) 100%),
+    url(../images/hero-bg.jpg) center center / cover no-repeat;
+  background-color:#071B34;
 }
 .hero__inner{position:relative;z-index:2}
-
-/* 우측 사진 : 의회 본회의장 — 마스크로 좌측 경계를 녹여 배경과 매끄럽게 연결 */
-.hero__photo{
-  position:absolute;right:0;top:0;bottom:0;width:58%;z-index:1;overflow:hidden;
-  -webkit-mask-image:linear-gradient(90deg,transparent 0%,rgba(0,0,0,.15) 24%,rgba(0,0,0,.45) 44%,rgba(0,0,0,.8) 66%,#000 86%);
-          mask-image:linear-gradient(90deg,transparent 0%,rgba(0,0,0,.15) 24%,rgba(0,0,0,.45) 44%,rgba(0,0,0,.8) 66%,#000 86%);
-}
-.hero__photo img{width:100%;height:100%;object-fit:cover;display:block}
-/* 사진 위 녹색 톤 정리 + 상하 비네트 */
-.hero__photo-grad{
-  position:absolute;inset:0;
-  background:
-    linear-gradient(180deg,rgba(7,27,52,.32) 0%,rgba(7,27,52,0) 26%,rgba(7,27,52,0) 74%,rgba(7,27,52,.38) 100%),
-    linear-gradient(90deg,rgba(14,60,102,.28) 0%,rgba(14,60,102,.10) 55%,rgba(14,60,102,0) 100%);
-}
 
 .hero__eyebrow{
   display:inline-block;padding:7px 18px;border-radius:100px;
@@ -130,9 +117,8 @@ ul,ol{list-style:none}
 .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
 
 /* ── 히어로 상담 입력창 : 히어로 가운데 하단 · 컴팩트 ──
-   position:relative + z-index:3 필수 !
-   히어로 사진(.hero__photo, absolute/z-index:1)이 정적 입력창을 덮어서
-   클릭이 사진에 가로채임 → 연락처·체크박스·버튼이 먹히지 않던 원인 */
+   position:relative + z-index:3 로 히어로의 다른 레이어보다 위에 뜨게 함
+   (과거에는 절대배치 사진이 입력창을 덮어 클릭이 가로채이던 원인이었음) */
 .hero-form-wrap{position:relative;z-index:3}
 .hero-form{
   display:flex;flex-wrap:wrap;align-items:center;gap:10px 22px;
@@ -450,7 +436,6 @@ ul,ol{list-style:none}
   .steps{grid-template-columns:repeat(2,1fr)}
   .will__grid{grid-template-columns:repeat(2,1fr)}
   .loc{grid-template-columns:1fr}
-  .hero__photo{width:54%}
 }
 
 @media (max-width:860px){
@@ -467,8 +452,8 @@ ul,ol{list-style:none}
   .header__cta{margin-left:auto;padding:9px 17px;font-size:13.5px}
 
   .hero{padding:120px 0 70px}
-  .hero__photo{width:100%;-webkit-mask-image:none;mask-image:none}
-  .hero__photo-grad{background:linear-gradient(180deg,rgba(7,27,52,.9),rgba(7,27,52,.94))}
+  /* 좁은 화면 : 배경 사진 위에 한 겹 더 어둡게 덮어 흰 글씨 가독성 확보 */
+  .hero::after{content:"";position:absolute;inset:0;background:rgba(7,27,52,.4);pointer-events:none}
   /* 좁은 화면 : 가운데 정렬 유지 + 아래로 내림 */
   .hero-form{margin:52px auto 0}
   .section{padding:66px 0}
