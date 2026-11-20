@@ -94,6 +94,17 @@ function initTopBtn() {
       받는 주소를 바꿀 때는 MAIL_TO 한 줄만 수정하면 됩니다. */
 const MAIL_TO = "1004m@hanmail.net";
 
+/* 상담 신청 메일 주소 만들기 : 성명·연락처를 제목/본문에 담아 발송 */
+function buildConsultMail(name, tel) {
+  const subject = `[상담신청] ${name} / ${tel}`;
+  const body =
+    `합동속기사무소 상담 신청\n\n` +
+    `성명 : ${name}\n` +
+    `연락처 : ${tel}\n` +
+    `개인정보 수집 동의 : 동의\n`;
+  return `mailto:${MAIL_TO}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+}
+
 function initConsultForm() {
   const form = document.getElementById('consultForm');
   if (!form) return;
@@ -109,15 +120,7 @@ function initConsultForm() {
     if (!tel)   { alert('연락처를 입력해 주세요.'); document.getElementById('cfTel').focus();   return; }
     if (!agree) { alert('개인정보 수집에 동의해 주세요.'); document.getElementById('cfAgree').focus(); return; }
 
-    const subject = `[상담신청] ${name} / ${tel}`;
-    const body =
-      `합동속기사무소 상담 신청\n\n` +
-      `성명 : ${name}\n` +
-      `연락처 : ${tel}\n` +
-      `개인정보 수집 동의 : 동의\n`;
-
-    window.location.href =
-      `mailto:${MAIL_TO}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+    window.location.href = buildConsultMail(name, tel);
   });
 }
 
