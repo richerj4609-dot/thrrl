@@ -89,11 +89,44 @@ function initTopBtn() {
   });
 }
 
-/* 7) 본문 실행 */
+/* 7) 히어로 상담 입력창 → 메일로 전송
+      입력값을 메일 제목/본문에 담아 사용자 메일 프로그램으로 넘깁니다.
+      받는 주소를 바꿀 때는 MAIL_TO 한 줄만 수정하면 됩니다. */
+const MAIL_TO = "1004m@hanmail.net";
+
+function initConsultForm() {
+  const form = document.getElementById('consultForm');
+  if (!form) return;
+
+  form.addEventListener('submit', e => {
+    e.preventDefault();
+
+    const name  = document.getElementById('cfName').value.trim();
+    const tel   = document.getElementById('cfTel').value.trim();
+    const agree = document.getElementById('cfAgree').checked;
+
+    if (!name)  { alert('성명을 입력해 주세요.');  document.getElementById('cfName').focus();  return; }
+    if (!tel)   { alert('연락처를 입력해 주세요.'); document.getElementById('cfTel').focus();   return; }
+    if (!agree) { alert('개인정보 수집에 동의해 주세요.'); document.getElementById('cfAgree').focus(); return; }
+
+    const subject = `[상담신청] ${name} / ${tel}`;
+    const body =
+      `합동속기사무소 상담 신청\n\n` +
+      `성명 : ${name}\n` +
+      `연락처 : ${tel}\n` +
+      `개인정보 수집 동의 : 동의\n`;
+
+    window.location.href =
+      `mailto:${MAIL_TO}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+  });
+}
+
+/* 8) 본문 실행 */
 document.addEventListener('DOMContentLoaded', () => {
   applyKakaoUrl();
   initHeader();
   initMobileNav();
   initFaq();
   initTopBtn();
+  initConsultForm();
 });
